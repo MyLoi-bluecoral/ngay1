@@ -1,0 +1,240 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;             
+  padding: 16px 140px;        
+  background-color: #0a0a0a; 
+  color: white;
+  margin: 0 auto;  
+}
+
+.logo img {
+  height: 40px;
+  background: transparent;
+}
+
+/* Menu */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 400;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #f5c644;
+}
+
+/* Button vàng */
+.btn-yellow {
+  background: #f5c644;
+  color: #000;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.btn-yellow:hover {
+  background: #f5c644;
+}
+
+/* Hero */
+.hero {
+  background: url("Ảnh/main/background.jpg") repeat;
+  background-size: contain;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 60px 80px;
+  gap: 50px;
+}
+
+.hero-text {
+  padding: 0 65px;
+}
+
+.hero-text h1 {
+  font-size: 54px;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 23px;
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+.hero-img {
+  width: 100%;
+  padding: 0px 60px;
+}
+
+.hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  justify-content: space-around;
+  background: #222;
+  padding: 32px 64px;
+  text-align: center;
+  top: 585px;
+  left: 140px;
+}
+
+.stat-box h2 {
+  font-size: 36px;
+  color: #f5c644;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.stat-box p {
+  font-size: 18px;
+  font-weight: 400;
+  color: #f5c644;
+}
+
+.stat-box small {
+  color: #aaa;
+  font-size: 14px;
+  display: block;
+  margin-top: 5px;
+}
+/* About Us */
+.about {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 90px 140px;
+  background: #fff;
+
+}
+.about-img {
+  position: relative;
+  margin-top: 80px;
+  padding: 0 80px;
+}
+
+.about-img img {
+  width: 200%;
+}
+
+.about-img .btn-overlay {
+  background: #f9c600;
+  color: #000;
+}
+
+.about-text {
+  padding:  10px 150px;
+}
+
+.about-text h4 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #888;
+  margin-bottom: 8px;
+  line-height: 26px;
+}
+
+.about-text h3 {
+  font-size: 50px;
+  font-weight: 600;
+  color: #000;
+  line-height: 55px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.about-text p {
+  font-size: 18px;
+  line-height: 400;
+  color: #333;
+  line-height: 30px;
+  margin-bottom: 8px;
+}
+
+.indicators {
+  display: flex;
+  gap: 8px;
+}
+.about-text p {
+  color: #000;
+}
+/* map */
+.global {
+  background: #f5c644;
+}
+.global h2 {
+font-size: 50px;
+font-weight: 600;
+line-height: 55px;
+text-align: center;
+margin-bottom: 15px;
+padding: 20px;
+}
+.global p {
+  text-align: center;
+  size: 18px;
+  line-height: 30px;
+  font-weight: 400;
+  color: rgb(67, 67, 71);
+  margin-top: -20px;
+}
+.global-map {
+  position: relative;
+  display: inline-block;
+  background: #f5c644;
+  display: flex;
+ justify-content: center;
+
+}
+.marker {
+
+  position: absolute;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.marker img {
+  width: 70%;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.marker.hk {
+  top: 150px;   
+  left: 750px;
+}
+.dot1 {
+  top: 150px;   
+  left: 750px;
+}
+
+
