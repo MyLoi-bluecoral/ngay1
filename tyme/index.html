@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.maptiler.com/maptiler-sdk-js/v3.6.1/maptiler-sdk.umd.min.js"></script>
+  <link href="https://cdn.maptiler.com/maptiler-sdk-js/v3.6.1/maptiler-sdk.css" rel="stylesheet" />
+  <title>Tyme Careers</title>
+  <link rel="stylesheet" href="assets/css/tyme.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar ">
+    <div class="logo">
+      <img src="images/logo/logo.png" alt="Logo">
+    </div>
+    <ul class="h5">
+      <li><a href="#">ABOUT US</a></li>
+      <li><a href="#">HIGH-TECH, HIGH-TOUCH</a></li>
+      <li><a href="#">PERKS & BENEFITS</a></li>
+      <li><a href="#">JOB OPPORTUNITIES</a></li>
+      <li><a href="#" class="btn-yellow">CONNECT US</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero bg-[url('/images/main/background.jpg')]">
+    <div class="hero-text">
+      <h1>Upstart your  careers<h1>
+      <p>
+        Are you a technologist who wants to be a part of
+        Tyme’s global team? Join us to shape the future of 
+        banking in fast-growing emerging markets.
+      </p>
+      <h55 href="#" class="btn-yellow">BROWSE ALL JOBS</h55>
+    </div>
+    <div class="hero-img">
+      <img src="images/main/hearder.jpg" alt="career">
+    </div>
+  </section>
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stat-box">
+      <h22>5</h22>
+      <p33>Countries</p33>
+      <small>Hongkong – Singapore – Vietnam – Philippines – South Africa</small>
+    </div>
+    <div class="stat-box">
+      <h22>4.000.000+</h22>
+      <p33>Customers</p33>
+      <small>Have been acquired since our first launch</small>
+    </div>
+    <div class="stat-box">
+      <h22>250+</h22>
+      <p33>Tyme Experts in Vietnam</p33>
+      <small>An ideal blend of entrepreneurs, engineers and banking experts</small>
+    </div>
+  </section>
+  <!-- Back to top -->
+  <a href="#" class="back-to-top">↑</a>
+  <!----About us---->
+  <section class="about">
+    <div class="about-img">
+      <img src="images/main/video.jpg" alt="About Tyme">
+    </div>
+    <div class="about-text">
+      <h4>About Us</h4>
+      <h2>Tyme Vietnam</h2>
+      <p >Established in 2015, Tyme Vietnam has been the international arm of Tyme, 
+        gathering our engineering and product teams, who share a global mission to 
+        become smart bank builders and reimagine the bank's digital future through technology. 
+        We strive hard to find the right balance between the digital and physical worlds: 
+        the healthy mix that boosts productivity and employee wellbeing.</p>
+    </div>
+  </section>
+<!-----maker-------->
+ <link 
+    rel="stylesheet" 
+    href="https://unpkg.com/leaflet/dist/leaflet.css" 
+  />
+
+  <style>
+    #map {
+      height: 80vh; /* full màn hình */
+      width: 80%;
+      justify-content: center;
+      left: 160px;
+  }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <script>
+    const key = 'PEacu8FQQcrszXjSOBDp';
+    const map = L.map('map').setView([49.2125578, 16.62662018], 14);
+
+    L.tileLayer(`https://api.maptiler.com/maps/openstreetmap/{z}/{x}/{y}.jpg?key=PEacu8FQQcrszXjSOBDp`, {
+      tileSize: 512,
+      zoomOffset: -1,
+      minZoom: 1,
+      attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+      crossOrigin: true
+    }).addTo(map);
+
+    var marker = L.marker([51.5, -0.09]).addTo(map);
+    marker.bindPopup("London").openPopup();
+  </script>
+
+  <!-- Core Values Section -->
+ <section class="core-values">
+  <div class="core-container">
+    <!-- Left side: values content -->
+     <div class="values-left" id="values-left">
+    <div class="value-box" data-value="ownership">
+      <h3>Ownership</h3>
+      <p3>
+        Ownership is the integral driving force that enables our bank builders to innovate and build great customer solutions.
+      </p3>
+    </div>
+    <div class="value-box" data-value="respect">
+      <h3>Respect</h3>
+      <p3>
+        We empower our people to be their best and treat everyone as an entrepreneur with a voice to be heard.
+      </p3>
+    </div>
+    <div class="value-box" data-value="lean">
+      <h3>Lean</h3>
+      <p3>
+        We believe in working smart, being resourceful, and continuously optimizing.
+      </p3>
+    </div>
+    <div class="value-box" data-value="transparent">
+      <h3>Transparent</h3>
+      <p3>
+        Transparency builds trust. We value open communication, honesty, and integrity in all that we do.
+      </p3>
+    </div>
+    <div class="value-box" data-value="improving">
+      <h3>Improving</h3>
+      <p3>
+        We are committed to learning, growing, and continuously improving our products and processes.
+      </p3>
+    </div>
+  </div>
+
+  <script>
+    const scrollContainer = document.getElementById("values-left");
+    const items = scrollContainer.querySelectorAll(".value-box");
+
+    function updateEffects() {
+      const containerRect = scrollContainer.getBoundingClientRect();
+      const containerCenter = containerRect.top + containerRect.height / 2;
+      items.forEach(item => {
+        const itemRect = item.getBoundingClientRect();
+        const itemCenter = itemRect.top + itemRect.height / 2;
+        const distance = Math.abs(containerCenter - itemCenter);
+        const ratio = Math.max(0, 1 - distance / (containerRect.height / 2));
+        item.style.transform = `scale(${0.5 + ratio * 0.7})`;
+        item.style.opacity = 0.2 + ratio * 0.8;
+        ratio > 0.95 ? item.classList.add("active") : item.classList.remove("active");
+      });
+    }
+
+    scrollContainer.addEventListener("scroll", updateEffects);
+    window.addEventListener("load", updateEffects);
+  </script>
+
+    <!-- Right side: heading -->
+    <div class="values-right">
+      <h4>About Us</h4>
+      <h22>Our<br>Core Values</h22>
+    </div>
+    </div>
+  
+
+  <!-- Tabs -->
+  <div class="values-tabs">
+    <div class="tab active" data-value="ownership">01. Ownership</div>
+    <div class="tab" data-value="respect">02. Respect</div>
+    <div class="tab" data-value="lean">03. Lean</div>
+    <div class="tab" data-value="transparent">04. Transparent</div>
+    <div class="tab" data-value="improving">05. Improving</div>
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll(".tab");
+  const boxes = document.querySelectorAll(".value-box");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      // tab active
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+
+      // box active
+      boxes.forEach(b => b.classList.remove("active"));
+      document.querySelector(`.value-box[data-value="${tab.dataset.value}"]`).classList.add("active");
+    });
+  });
+</script>
+
+  <!-- High-Tech, High-Touch Section -->
+  <section class="high-section bg-[url('/images/main/background2.png')]">
+  <h4>High-Tech, High-Touch</h4>
+  <h2>"High-tech, high-touch" philosophy has its roots deep in our culture</h2>
+
+  <!-- Nội dung chính chia 2 cột -->
+  <div class="high-content">
+    <!-- Cột trái -->
+    <div class="high-boxes">
+      <div class="box">
+        <img src="images/logo/hightech.png" alt="GDS">
+        <h3>High-Tech</h3>
+        <p>As a technology-powered organization, we leverage emerging technologies and collaboration tools to create a digital and mobile workplace that reinforces agility, creativity, and teamwork.</p>
+      </div>
+
+      
+      <div class="box">
+        <img src="images/logo/hightouch.png" alt="GDS">
+        <h3>High-Touch</h3>
+        <p >But we don’t forget about touch – the power that connects our people. We strive hard to find the right balance between the digital and physical worlds; the healthy mix that boosts productivity and employee well-being.</p>
+      </div>
+    </div>
+
+      <!-- 2 hàng logo công nghệ -->
+  <div class="tech">
+    <div class="logo-tech">
+  <div class="tech-logos">
+    <img src="images/logo/WSO2.png" alt="WSO2">
+    <img src="images/logo/tableau.png" alt="Tableau">
+    <img src="images/logo/AWS.png" alt="AWS">
+    <img src="images/logo/docker.png" alt="Docker">
+  </div>
+
+  <div class="tech-logos">
+    <img src="images/logo/Snow.png" alt="Snowflake">
+    <img src="images/logo/Atlassian.png" alt="Atlassian">
+    <img src="images/logo/data.png" alt="Databricks">
+    <img src="images/logo/GDS.png" alt="GDS">
+  </div>
+  </div>
+    <!-- Cột phải -->
+    <div class="high-logos">
+      <div class="row">
+        <div class="item">
+          <img src="images/logo/insurance.png" alt="Insurance">
+          <h3>Insurance</h3>
+        </div>
+        <div class="item">
+          <img src="images/logo/TermLoan.png" alt="TermLoan">
+          <h3>Unsecured TermLoan</h3>
+        </div>
+        <div class="item">
+          <img src="images/logo/TymeAdvance.png" alt="Tyme">
+          <h3>Tyme Advance</h3>
+        </div>
+        <div class="item">
+          <img src="images/logo/Webapp.png" alt="Web">
+          <h3>Web & App</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="item">
+          <img src="images/logo/Account.png" alt="Account">
+          <h3>Personal Account</h3>
+        </div>
+        <div class="item">
+          <img src="images/logo/paylater.png" alt="Paylater">
+          <h3>More Tyme buy now, pay later</h3>
+        </div>
+        <div class="item">
+          <img src="images/logo/creaditcard.png" alt="Card">
+          <h3>Credit Card</h3>
+        </div>
+        <div class="item">
+          <img src="images/logo/more.png" alt="More">
+          <h3>And More</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+<!----perk----->
+ <section class="perks">
+  <h4>Why you will love working here?</h4>
+  <h2>Perks & Benefits</h2>
+  <div class="perks-grid">
+    
+    <!-- Hàng 1 -->
+    <div class="perk">
+      <img src="images/logo2/bonus.png" alt="Bonus">
+      <div class="perk-text">
+        <h3>Bonus and Allowances</h3>
+        <p>You will receive 13th-month salary and performance bonus with several allowances such as meal, parking, referral, laptop award, etc.</p>
+      </div>
+    </div>
+
+    <div class="perk">
+      <img src="images/logo2/career.png" alt="Career">
+      <div class="perk-text">
+        <h3>Career Opportunities</h3>
+        <p>SMART goals and clear career opportunities (technical seminar, conference and career talk) - we focus on your development.</p>
+      </div>
+    </div>
+
+    <div class="perk">
+      <img src="images/logo2/a world.png" alt="Culture">
+      <div class="perk-text">
+        <h3>A World-class Culture</h3>
+        <p>Values-driven and international working environment with Agile culture, dynamic employee engagement activities and events.</p>
+      </div>
+    </div>
+
+    <!-- Hàng 2 -->
+    <div class="perk">
+      <img src="images/logo2/premium.png" alt="Health Care">
+      <div class="perk-text">
+        <h3>Premium Health Care</h3>
+        <p>Premium health care will be provided for you and your family, besides Insurances as Vietnamese labor law.</p>
+      </div>
+    </div>
+
+    <div class="perk">
+      <img src="images/logo2/travel.png" alt="Overseas Travel">
+      <div class="perk-text">
+        <h3>Overseas Travel</h3>
+        <p>Overseas travel opportunities for training and work.</p>
+      </div>
+    </div>
+
+    <div class="perk">
+      <img src="images/logo2/work.png" alt="Work-life Balance">
+      <div class="perk-text">
+        <h3>Work-life balance</h3>
+        <p>40 working hours per week from Monday to Friday.</p>
+      </div>
+    </div>
+
+    <!-- Hàng 3 -->
+    <div class="perk">
+      <img src="images/logo2/Annual.png" alt="Annual Leaves">
+      <div class="perk-text">
+        <h3>Annual Leaves</h3>
+        <p>15 days and other leaves (sick leave, birthday leave, vaccine leave, etc.)</p>
+      </div>
+    </div>
+
+    <div class="perk">
+      <img src="images/logo2/learning.png" alt="Learning">
+      <div class="perk-text">
+        <h3>Learning and Development</h3>
+        <p>Tyme Academy, Tyme Coaching, English Club, Internal Hackathons and unlimited online training courses to explore.</p>
+      </div>
+    </div>
+
+    <div class="perk">
+      <img src="images/logo2/rewards.png" alt="Rewards">
+      <div class="perk-text">
+        <h3>Rewards</h3>
+        <p>A laptop for employees with full 3 years of continuous working period.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-----Life at Tyme------->
+<section class="zero">
+    <div class="zero-text">
+      <h2>Life at Tyme</h2>
+      <p>
+        Discover what makes life at Tyme intriguing and exciting through events happening in our offices
+      </p>
+    </div>
+    <div class="zero-img">
+      <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide"><img src="images/main/Mask Group.png" /></div>
+    <div class="swiper-slide"><img src="images/main/Mask Group.png" /></div>
+    <div class="swiper-slide"><img src="images/main/Mask Group.png" /></div>
+  </div>
+
+  <!-- pagination + arrows -->
+  <div class="swiper-pagination"></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  var swiper = new Swiper(".mySwiper", {
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+   
+  });
+</script>
+
+  </section>
+
+  <!-- Tabs -->
+   <div class="carerr">
+  <h2>Career Opportunities</h2> 
+  <div class="tabs" id="tabs">
+    <button class="active">All</button>
+    <button>Engineering (24)</button>
+    <button>Product Design (32)</button>
+    <button>Business & Data Analytics (16)</button>
+    <button>Back-office (HR, Finance, IT) (18)</button>
+  </div>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="filter-header">
+        <h3>Filter</h3>
+        <button class="clear-btn" onclick="clearFilters()">Clear Filter</button>
+      </div>
+
+      <div class="filter-group">
+        <h3>By Level</h3>
+        <label><input type="checkbox" checked> All</label>
+        <label><input type="checkbox"> Senior</label>
+        <label><input type="checkbox"> Middle</label>
+        <label><input type="checkbox"> Junior</label>
+        <label><input type="checkbox"> Intern</label>
+      </div>
+
+      <div class="filter-group">
+        <h3>By Location</h3>
+        <label><input type="checkbox" checked> All</label>
+        <label><input type="checkbox"> Ho Chi Minh</label>
+        <label><input type="checkbox"> Ha Noi</label>
+        <label><input type="checkbox"> Da Nang</label>
+        <label><input type="checkbox"> Others</label>
+      </div>
+
+      <div class="filter-group">
+        <h3>By Employment Type</h3>
+        <label><input type="checkbox" checked> All</label>
+        <label><input type="checkbox"> Full-time</label>
+        <label><input type="checkbox"> Part-time</label>
+        <label><input type="checkbox"> Freelance</label>
+      </div>
+    </div>
+
+    <!-- Job List -->
+    <div class="job-list">
+      <div class="job-header">
+        <div id="viewing"></div>
+        <div>
+          Results per page:
+          <select id="resultsPerPage" onchange="changeResultsPerPage(this.value)">
+            <option value="10">10</option>
+            <option value="20" selected>20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+      </div>
+      <div id="jobList"></div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination" id="pagination"></div>
+
+  <script>
+    const jobs = Array.from({length: 200}, (_, i) => ({
+      title: "Software Engineering (Java API, .Net, Python, etc.)",
+      level: "Senior",
+      location: "Ho Chi Minh & Ha Noi",
+      type: "Fulltime"
+    }));
+
+    let jobsPerPage = 20;
+    let currentPage = 1;
+
+    function renderJobs(page) {
+      const start = (page - 1) * jobsPerPage;
+      const end = Math.min(start + jobsPerPage, jobs.length);
+      const jobList = document.getElementById("jobList");
+      jobList.innerHTML = "";
+
+      jobs.slice(start, end).forEach(job => {
+  jobList.innerHTML += `
+    <div class="job-card">
+      <div>
+        <div class="job-title">${job.title}</div>
+        <div class="job-meta">
+          <img src="images/logo2/Star.png" alt="star" class="icon"> ${job.level} | 
+          <img src="images/logo2/Pin.png" alt="location" class="icon"> ${job.location} | 
+          <img src="images/logo2/Union.png" alt="clock" class="icon"> ${job.type}
+        </div>
+      </div>
+      <div>
+        <img src="images/logo2/right.png" alt="arrow" class="icon">
+      </div>
+    </div>
+  `;
+});
+
+      // update viewing text
+      document.getElementById("viewing").innerText =
+        `Viewing ${start + 1} - ${end} of ${jobs.length}`;
+    }
+
+    function goToPage(page) {
+      currentPage = page;
+      renderJobs(page);
+      renderPagination();
+    }
+
+    function changeResultsPerPage(value) {
+      jobsPerPage = parseInt(value);
+      currentPage = 1;
+      renderJobs(currentPage);
+      renderPagination();
+    }
+
+    // Tabs active switch
+    document.querySelectorAll("#tabs button").forEach(btn => {
+      btn.addEventListener("click", function () {
+        document.querySelectorAll("#tabs button").forEach(b => b.classList.remove("active"));
+        this.classList.add("active");
+      });
+    });
+
+    // Clear filters
+    function clearFilters() {
+      document.querySelectorAll(".sidebar input[type=checkbox]").forEach(chk => chk.checked = false);
+      document.querySelectorAll(".filter-group").forEach(group => {
+        let allCheckbox = group.querySelector("label:first-child input");
+        if (allCheckbox) allCheckbox.checked = true;
+      });
+    }
+
+    // Init
+    renderJobs(currentPage);
+    renderPagination();
+  </script>
+  <!-- Pagination Section -->
+<div class="pagination">
+  <p>Viewing 1 - 20 of 200</p>
+  <div class="pages">
+    <button class="active">1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>&gt;</button>
+  </div>
+</div>
+</div>
+
+<!-- Stay connected section -->
+<section class="stay-connected bg-[url('/images/main/background2.png')]">
+  <h2 >Stay connected with us!</h2>
+  <p>Drop us your contact information so that we update you Tyme’s news</p>
+  <a href="#" class="btn-connect">CLICK HERE TO CONNECT</a>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Cột 1: Logo + địa chỉ -->
+    <div class="footer-left">
+      <div class="footer-logo">
+        <img src="images/logo/logo.png" alt="Tyme Logo">
+      </div>
+      <p3>Address: HIU Building, 215 Dien Bien Phu, Ward 15, Binh Thanh Street, Vietnam</p3>
+      <div class="partner-logos">
+        <img src="images/logo2/logo.png" alt="Logo 1">
+        <img src="images/logo2/logo.png" alt="Logo 2">
+      </div>
+    </div>
+
+    <!-- Cột 2: Menu -->
+    <div class="footer-middle">
+      <ul>
+        <li><a href="#">ABOUT US</a></li>
+        <li><a href="#">HIGH-TECH, HIGH-TOUCH</a></li>
+        <li><a href="#">PERKS & BENEFITS</a></li>
+        <li><a href="#">JOB OPPORTUNITIES</a></li>
+      </ul>
+    </div>
+
+    <!-- Cột 3: Follow Us -->
+    <div class="footer-right">
+      <h4>Follow Us</h4>
+      <img src="images/logo2/connect.png"
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>©2021 Tyme Limited. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Career Opportunities</title>
+  <link rel="stylesheet" href="tick.css">
+</head>
+<body>
+  <header>Career Opportunities</header>
+
+  <!-- Tabs -->
+  <div class="tabs" id="tabs">
+    <button class="active">All</button>
+    <button>Engineering (24)</button>
+    <button>Product Design (32)</button>
+    <button>Business & Data Analytics (16)</button>
+    <button>Back-office (HR, Finance, IT) (18)</button>
+  </div>
+
+  <div class="container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="filter-header">
+        <h3>Filter</h3>
+        <button class="clear-btn" onclick="clearFilters()">Clear Filter</button>
+      </div>
+
+      <div class="filter-group">
+        <h4>By Level</h4>
+        <label><input type="checkbox" checked> All</label>
+        <label><input type="checkbox"> Senior</label>
+        <label><input type="checkbox"> Middle</label>
+        <label><input type="checkbox"> Junior</label>
+        <label><input type="checkbox"> Intern</label>
+      </div>
+
+      <div class="filter-group">
+        <h4>By Location</h4>
+        <label><input type="checkbox" checked> All</label>
+        <label><input type="checkbox"> Ho Chi Minh</label>
+        <label><input type="checkbox"> Ha Noi</label>
+        <label><input type="checkbox"> Da Nang</label>
+        <label><input type="checkbox"> Others</label>
+      </div>
+
+      <div class="filter-group">
+        <h4>By Employment Type</h4>
+        <label><input type="checkbox" checked> All</label>
+        <label><input type="checkbox"> Full-time</label>
+        <label><input type="checkbox"> Part-time</label>
+        <label><input type="checkbox"> Freelance</label>
+      </div>
+    </div>
+
+    <!-- Job List -->
+    <div class="job-list">
+      <div class="job-header">
+        <div id="viewing"></div>
+        <div>
+          Results per page:
+          <select id="resultsPerPage" onchange="changeResultsPerPage(this.value)">
+            <option value="10">10</option>
+            <option value="20" selected>20</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+          </select>
+        </div>
+      </div>
+      <div id="jobList"></div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination" id="pagination"></div>
+
+  <script>
+    const jobs = Array.from({length: 200}, (_, i) => ({
+      title: "Software Engineering (Java API, .Net, Python, etc.)",
+      level: "Senior",
+      location: "Ho Chi Minh & Ha Noi",
+      type: "Fulltime"
+    }));
+
+    let jobsPerPage = 20;
+    let currentPage = 1;
+
+    function renderJobs(page) {
+      const start = (page - 1) * jobsPerPage;
+      const end = Math.min(start + jobsPerPage, jobs.length);
+      const jobList = document.getElementById("jobList");
+      jobList.innerHTML = "";
+
+      jobs.slice(start, end).forEach(job => {
+        jobList.innerHTML += `
+          <div class="job-card">
+            <div>
+              <div class="job-title">${job.title}</div>
+              <div class="job-meta">⭐ ${job.level} | 📍 ${job.location} | ⏰ ${job.type}</div>
+            </div>
+            <div>➡️</div>
+          </div>
+        `;
+      });
+
+      // update viewing text
+      document.getElementById("viewing").innerText =
+        `Viewing ${start + 1} - ${end} of ${jobs.length}`;
+    }
+
+    function goToPage(page) {
+      currentPage = page;
+      renderJobs(page);
+      renderPagination();
+    }
+
+    function changeResultsPerPage(value) {
+      jobsPerPage = parseInt(value);
+      currentPage = 1;
+      renderJobs(currentPage);
+      renderPagination();
+    }
+
+    // Tabs active switch
+    document.querySelectorAll("#tabs button").forEach(btn => {
+      btn.addEventListener("click", function () {
+        document.querySelectorAll("#tabs button").forEach(b => b.classList.remove("active"));
+        this.classList.add("active");
+      });
+    });
+
+    // Clear filters
+    function clearFilters() {
+      document.querySelectorAll(".sidebar input[type=checkbox]").forEach(chk => chk.checked = false);
+      document.querySelectorAll(".filter-group").forEach(group => {
+        let allCheckbox = group.querySelector("label:first-child input");
+        if (allCheckbox) allCheckbox.checked = true;
+      });
+    }
+
+    // Init
+    renderJobs(currentPage);
+    renderPagination();
+  </script>
+  <!-- Pagination Section -->
+<div class="pagination">
+  <p>Viewing 1 - 20 of 200</p>
+  <div class="pages">
+    <button class="active">1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>&gt;</button>
+  </div>
+</div>
+
+</body>
+</html>
